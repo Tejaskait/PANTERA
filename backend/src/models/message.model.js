@@ -1,12 +1,19 @@
-import mongoose from "mongoose";
+import mongoose from "mongoose"; // Importing mongoose to define the schema and model.
 
+// Defining the message schema
 const messageSchema = new mongoose.Schema(
 	{
-		senderId: { type: String, required: true }, // Clerk user ID
-		receiverId: { type: String, required: true }, // Clerk user ID
+		// ID of the sender (Clerk user ID, required)
+		senderId: { type: String, required: true },
+
+		// ID of the receiver (Clerk user ID, required)
+		receiverId: { type: String, required: true },
+
+		// Content of the message (Required)
 		content: { type: String, required: true },
 	},
-	{ timestamps: true }
+	{ timestamps: true } // Automatically adds createdAt and updatedAt timestamps
 );
 
+// Creating and exporting the Message model based on the schema
 export const Message = mongoose.model("Message", messageSchema);
